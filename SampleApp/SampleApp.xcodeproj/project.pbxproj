@@ -13,6 +13,8 @@
 		1C6482D8255149DF006158E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C6482D6255149DF006158E3 /* Main.storyboard */; };
 		1C6482DA255149E0006158E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C6482D9255149E0006158E3 /* Assets.xcassets */; };
 		1C6482DD255149E0006158E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C6482DB255149E0006158E3 /* LaunchScreen.storyboard */; };
+		1C6482E825516806006158E3 /* football.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1C6482E725516806006158E3 /* football.mp4 */; };
+		1C6482EB2551696C006158E3 /* KorgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6482EA2551696C006158E3 /* KorgeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		1C6482D9255149E0006158E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C6482DC255149E0006158E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C6482DE255149E0006158E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C6482E725516806006158E3 /* football.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = football.mp4; sourceTree = "<group>"; };
+		1C6482EA2551696C006158E3 /* KorgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KorgeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +63,12 @@
 				1C6482D0255149DF006158E3 /* AppDelegate.swift */,
 				1C6482D2255149DF006158E3 /* SceneDelegate.swift */,
 				1C6482D4255149DF006158E3 /* ViewController.swift */,
+				1C6482EA2551696C006158E3 /* KorgeViewController.swift */,
 				1C6482D6255149DF006158E3 /* Main.storyboard */,
 				1C6482D9255149E0006158E3 /* Assets.xcassets */,
 				1C6482DB255149E0006158E3 /* LaunchScreen.storyboard */,
 				1C6482DE255149E0006158E3 /* Info.plist */,
+				1C6482E725516806006158E3 /* football.mp4 */,
 			);
 			path = SampleApp;
 			sourceTree = "<group>";
@@ -126,6 +132,7 @@
 			files = (
 				1C6482DD255149E0006158E3 /* LaunchScreen.storyboard in Resources */,
 				1C6482DA255149E0006158E3 /* Assets.xcassets in Resources */,
+				1C6482E825516806006158E3 /* football.mp4 in Resources */,
 				1C6482D8255149DF006158E3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,6 +147,7 @@
 				1C6482D5255149DF006158E3 /* ViewController.swift in Sources */,
 				1C6482D1255149DF006158E3 /* AppDelegate.swift in Sources */,
 				1C6482D3255149DF006158E3 /* SceneDelegate.swift in Sources */,
+				1C6482EB2551696C006158E3 /* KorgeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
