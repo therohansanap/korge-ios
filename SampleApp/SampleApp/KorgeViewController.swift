@@ -7,14 +7,26 @@
 
 import UIKit
 import GLKit
+import GameMain
 
 class KorgeViewController: GLKViewController {
   
   var context: EAGLContext?
   
+  var gameWindow2: MyIosGameWindow2?
+  var rootGameMain: RootGameMain?
+  
+  var isInitialized = false
+  var reshape = false
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    print(view is GLKView)
+    
+    self.isInitialized = false
+    self.reshape = true
+    
+    self.gameWindow2 = MyIosGameWindow2()
+    self.rootGameMain = RootGameMain()
     
     setupGL()
   }
@@ -30,8 +42,24 @@ class KorgeViewController: GLKViewController {
   }
   
   override func glkView(_ view: GLKView, drawIn rect: CGRect) {
-    glClearColor(0.85, 0.85, 0.85, 1.0)
-    glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
+//    glClearColor(0.85, 0.85, 0.85, 1.0)
+//    glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
+    
+    if !self.isInitialized {
+      self.isInitialized = true
+      self.gameWindow2?.gameWindow.dispatchInitEvent()
+      self.rootGameMain?.runMain()
+      self.reshape = true;
+    }
+    
+    let width = self.view.bounds.size.width * self.view.contentScaleFactor
+    let height = self.view.bounds.size.height * self.view.contentScaleFactor
+    if self.reshape {
+      self.reshape = false
+      self.gameWindow2?.gameWindow.dispatchReshapeEvent(x: 0, y: 0, width: Int32(width), height: Int32(height))
+    }
+    
+    self.gameWindow2?.gameWindow.frame()
   }
 }
 

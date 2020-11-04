@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
 
@@ -15,6 +16,10 @@ class ViewController: UIViewController {
     let vc = storyboard!.instantiateViewController(identifier: "korgeVC") as! KorgeViewController
     return vc
   }()
+  
+  let asset = AVAsset(url: Bundle.main.url(forResource: "football", withExtension: "mp4")!)
+  
+  lazy var assetReader: AVAssetReader = try! AVAssetReader(asset: asset)
 
   override func viewDidLoad() {
     super.viewDidLoad()
