@@ -23,13 +23,22 @@
                                     <constraint firstAttribute="width" secondItem="ukT-Wy-UjO" secondAttribute="height" multiplier="16:9" id="4OS-Dx-VGc"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWl-km-2vj">
+                                <rect key="frame" x="182" y="802" width="50" height="30"/>
+                                <state key="normal" title="Tap Me"/>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="178-IO-0EO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ukT-Wy-UjO" secondAttribute="trailing" id="7P3-By-b7G"/>
+                            <constraint firstItem="AWl-km-2vj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RLd-JJ-mfi"/>
                             <constraint firstItem="ukT-Wy-UjO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="RNq-ah-7sl"/>
                             <constraint firstItem="ukT-Wy-UjO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ic6-B0-9vm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="AWl-km-2vj" secondAttribute="bottom" constant="30" id="mRH-Bc-x9S"/>
                         </constraints>
                     </view>
                     <connections>
