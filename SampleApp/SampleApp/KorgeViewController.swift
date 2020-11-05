@@ -42,8 +42,6 @@ class KorgeViewController: GLKViewController {
   }
   
   override func glkView(_ view: GLKView, drawIn rect: CGRect) {
-//    glClearColor(0.85, 0.85, 0.85, 1.0)
-//    glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
     
     if !self.isInitialized {
       self.isInitialized = true

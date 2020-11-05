@@ -7,6 +7,8 @@
 
 import UIKit
 import AVFoundation
+import GLKit
+import GameMain
 
 class ViewController: UIViewController {
 
@@ -23,7 +25,8 @@ class ViewController: UIViewController {
   
   let outputSettings: [String: Any] = [
     kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA,
-    kCVPixelBufferMetalCompatibilityKey as String: true
+//    kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange,
+    kCVPixelBufferOpenGLESCompatibilityKey as String: true,
   ]
   
   lazy var trackOutput: AVAssetReaderTrackOutput = {
@@ -33,6 +36,9 @@ class ViewController: UIViewController {
   }()
   
   var timer: Timer?
+  
+  let context = CVEAGLContext(api: .openGLES2)!
+  var textureCache: CVOpenGLESTextureCache?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -50,11 +56,36 @@ class ViewController: UIViewController {
     
     assetReader.add(trackOutput)
     assetReader.startReading()
+    
+    let err = CVOpenGLESTextureCacheCreate(kCFAllocatorDefault, nil, context, nil, &textureCache)
+    if err != noErr {
+      print("Error - \(err)")
+    }
   }
   
-  var counter = 0
   @objc func timerInvocation(_ sender: Timer) {
-    guard let sampleBuffer = trackOutput.copyNextSampleBuffer() else { return }
+    autoreleasepool {
+      guard let sampleBuffer = trackOutput.copyNextSampleBuffer() else {
+        print("Could not get sample buffer")
+        return
+      }
+      
+      guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
+        print("Could not get image buffer")
+        return
+      }
+      
+      let pixelBuffer = imageBuffer as CVPixelBuffer
+      
+      guard let texture = getRGBATexture(for: pixelBuffer) else {
+//      guard let lumaTexture = getLumaTexture(for: pixelBuffer),
+//            let chromaTexture = getChromaTexture(for: pixelBuffer) else {
+        print("returned from here")
+        return
+      }
+      
+      MainKt.updateTexture(name: CVOpenGLESTextureGetName(texture))
+    }
   }
   
   @IBAction func buttonTapped(_ sender: UIButton) {
@@ -68,7 +99,100 @@ class ViewController: UIViewController {
                                         repeats: true)
     }
   }
+  
+  func getRGBATexture(for pixelBuffer: CVPixelBuffer) -> CVOpenGLESTexture? {
+    var texture: CVOpenGLESTexture?
+    
+    guard let textureCache = textureCache else { return nil }
+    
+    CVOpenGLESTextureCacheFlush(textureCache, 0)
+    
+    let err = CVOpenGLESTextureCacheCreateTextureFromImage(kCFAllocatorDefault,
+                                                           textureCache,
+                                                           pixelBuffer,
+                                                           nil,
+                                                           GLenum(GL_TEXTURE_2D),
+                                                           GLint(GL_RGBA),
+                                                           Int32(CVPixelBufferGetWidth(pixelBuffer)),
+                                                           Int32(CVPixelBufferGetHeight(pixelBuffer)),
+                                                           GLenum(GL_RGBA),
+                                                           GLenum(GL_UNSIGNED_BYTE),
+                                                           0,
+                                                           &texture)
+    
+    if texture == nil || err != noErr {
+      print("Error at creating RGBA texture - \(err.description)")
+    }
+    
+    return texture
+  }
+  
+  
 
 
+}
+
+
+
+
+
+
+
+
+
+extension ViewController {
+  func getLumaTexture(for pixelBuffer: CVPixelBuffer) -> CVOpenGLESTexture? {
+    var texture: CVOpenGLESTexture?
+    
+    guard let textureCache = textureCache else { return nil }
+    
+    CVOpenGLESTextureCacheFlush(textureCache, 0)
+    
+    let err = CVOpenGLESTextureCacheCreateTextureFromImage(kCFAllocatorDefault,
+                                                           textureCache,
+                                                           pixelBuffer,
+                                                           nil,
+                                                           GLenum(GL_TEXTURE_2D),
+                                                           GLint(GL_RED_EXT),
+                                                           Int32(CVPixelBufferGetWidth(pixelBuffer)),
+                                                           Int32(CVPixelBufferGetHeight(pixelBuffer)),
+                                                           GLenum(GL_RED_EXT),
+                                                           GLenum(GL_UNSIGNED_BYTE),
+                                                           0,
+                                                           &texture)
+    
+    if texture == nil || err != noErr {
+      print("Error at creating luminance texture - \(err.description)")
+    }
+    
+    return texture
+  }
+  
+  func getChromaTexture(for pixelBuffer: CVPixelBuffer) -> CVOpenGLESTexture? {
+    var texture: CVOpenGLESTexture?
+    
+    guard let textureCache = textureCache else { return nil }
+    
+    CVOpenGLESTextureCacheFlush(textureCache, 0)
+    
+    let err = CVOpenGLESTextureCacheCreateTextureFromImage(kCFAllocatorDefault,
+                                                           textureCache,
+                                                           pixelBuffer,
+                                                           nil,
+                                                           GLenum(GL_TEXTURE_2D),
+                                                           GLint(GL_RG_EXT),
+                                                           Int32(CVPixelBufferGetWidth(pixelBuffer)),
+                                                           Int32(CVPixelBufferGetHeight(pixelBuffer)),
+                                                           GLenum(GL_RG_EXT),
+                                                           GLenum(GL_UNSIGNED_BYTE),
+                                                           1,
+                                                           &texture)
+    
+    if texture == nil || err != noErr {
+      print("Error at creating luminance texture - \(err.description)")
+    }
+    
+    return texture
+  }
 }
 
