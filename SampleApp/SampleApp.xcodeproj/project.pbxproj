@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C1FC83225591CAB007E09DE /* GLContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1FC83125591CAB007E09DE /* GLContext.swift */; };
 		1C6482D1255149DF006158E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6482D0255149DF006158E3 /* AppDelegate.swift */; };
 		1C6482D3255149DF006158E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6482D2255149DF006158E3 /* SceneDelegate.swift */; };
 		1C6482D5255149DF006158E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6482D4255149DF006158E3 /* ViewController.swift */; };
@@ -16,18 +17,22 @@
 		1C6482E825516806006158E3 /* football.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1C6482E725516806006158E3 /* football.mp4 */; };
 		1C6482EB2551696C006158E3 /* KorgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6482EA2551696C006158E3 /* KorgeViewController.swift */; };
 		1C648300255177F5006158E3 /* korge.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C6482FF255177F5006158E3 /* korge.png */; };
-		1CA205C72553E0AE00DF204A /* GameMain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CA205C62553E0AE00DF204A /* GameMain.framework */; };
-		1CA205C82553E0AE00DF204A /* GameMain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1CA205C62553E0AE00DF204A /* GameMain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1CA205CF255413F500DF204A /* macbook.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CA205CE255413F500DF204A /* macbook.png */; };
+		1CA205D32554197C00DF204A /* GLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CA205D22554197C00DF204A /* GLHelper.m */; };
+		1CA205D525541C9400DF204A /* mercedes.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1CA205D425541C9400DF204A /* mercedes.jpg */; };
+		1CD981F425554B05003A5032 /* GameMain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6482EE255172B2006158E3 /* GameMain.framework */; };
+		1CD981F525554B05003A5032 /* GameMain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6482EE255172B2006158E3 /* GameMain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1CD981F82555554F003A5032 /* football-small.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1CD981F72555554F003A5032 /* football-small.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		1CA205C92553E0AE00DF204A /* Embed Frameworks */ = {
+		1CD981F625554B05003A5032 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1CA205C82553E0AE00DF204A /* GameMain.framework in Embed Frameworks */,
+				1CD981F525554B05003A5032 /* GameMain.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -35,6 +40,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1C1FC83125591CAB007E09DE /* GLContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLContext.swift; sourceTree = "<group>"; };
 		1C6482CD255149DF006158E3 /* SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C6482D0255149DF006158E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C6482D2255149DF006158E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +54,13 @@
 		1C6482EE255172B2006158E3 /* GameMain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameMain.framework; path = ../VideoOnKorge/build/bin/iosX64/debugFramework/GameMain.framework; sourceTree = "<group>"; };
 		1C6482FF255177F5006158E3 /* korge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = korge.png; path = ../../VideoOnKorge/build/combinedResources/resources/korge.png; sourceTree = "<group>"; };
 		1CA205C62553E0AE00DF204A /* GameMain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameMain.framework; path = ../VideoOnKorge/build/bin/iosArm64/debugFramework/GameMain.framework; sourceTree = "<group>"; };
+		1CA205CE255413F500DF204A /* macbook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = macbook.png; sourceTree = "<group>"; };
+		1CA205D02554197C00DF204A /* SampleApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SampleApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		1CA205D12554197C00DF204A /* GLHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLHelper.h; sourceTree = "<group>"; };
+		1CA205D22554197C00DF204A /* GLHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLHelper.m; sourceTree = "<group>"; };
+		1CA205D425541C9400DF204A /* mercedes.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mercedes.jpg; sourceTree = "<group>"; };
+		1CD981F72555554F003A5032 /* football-small.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "football-small.mp4"; sourceTree = "<group>"; };
+		1CF2FE9925556460003FB734 /* commonMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = commonMain; path = ../../VideoOnKorge/src/commonMain; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CA205C72553E0AE00DF204A /* GameMain.framework in Frameworks */,
+				1CD981F425554B05003A5032 /* GameMain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +78,7 @@
 		1C6482C4255149DF006158E3 = {
 			isa = PBXGroup;
 			children = (
+				1CF2FE9825556440003FB734 /* Kotlin */,
 				1C6482FE255177DE006158E3 /* assets */,
 				1C6482CF255149DF006158E3 /* SampleApp */,
 				1C6482CE255149DF006158E3 /* Products */,
@@ -86,12 +100,19 @@
 				1C6482D0255149DF006158E3 /* AppDelegate.swift */,
 				1C6482D2255149DF006158E3 /* SceneDelegate.swift */,
 				1C6482D4255149DF006158E3 /* ViewController.swift */,
+				1C1FC83125591CAB007E09DE /* GLContext.swift */,
+				1CA205D12554197C00DF204A /* GLHelper.h */,
+				1CA205D22554197C00DF204A /* GLHelper.m */,
 				1C6482EA2551696C006158E3 /* KorgeViewController.swift */,
 				1C6482D6255149DF006158E3 /* Main.storyboard */,
 				1C6482D9255149E0006158E3 /* Assets.xcassets */,
 				1C6482DB255149E0006158E3 /* LaunchScreen.storyboard */,
 				1C6482DE255149E0006158E3 /* Info.plist */,
 				1C6482E725516806006158E3 /* football.mp4 */,
+				1CD981F72555554F003A5032 /* football-small.mp4 */,
+				1CA205CE255413F500DF204A /* macbook.png */,
+				1CA205D02554197C00DF204A /* SampleApp-Bridging-Header.h */,
+				1CA205D425541C9400DF204A /* mercedes.jpg */,
 			);
 			path = SampleApp;
 			sourceTree = "<group>";
@@ -113,6 +134,14 @@
 			path = assets;
 			sourceTree = "<group>";
 		};
+		1CF2FE9825556440003FB734 /* Kotlin */ = {
+			isa = PBXGroup;
+			children = (
+				1CF2FE9925556460003FB734 /* commonMain */,
+			);
+			path = Kotlin;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -123,7 +152,7 @@
 				1C6482C9255149DF006158E3 /* Sources */,
 				1C6482CB255149DF006158E3 /* Resources */,
 				1C6482CA255149DF006158E3 /* Frameworks */,
-				1CA205C92553E0AE00DF204A /* Embed Frameworks */,
+				1CD981F625554B05003A5032 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -145,6 +174,7 @@
 				TargetAttributes = {
 					1C6482CC255149DF006158E3 = {
 						CreatedOnToolsVersion = 12.1;
+						LastSwiftMigration = 1210;
 					};
 				};
 			};
@@ -173,8 +203,11 @@
 			files = (
 				1C6482DD255149E0006158E3 /* LaunchScreen.storyboard in Resources */,
 				1C6482DA255149E0006158E3 /* Assets.xcassets in Resources */,
+				1CD981F82555554F003A5032 /* football-small.mp4 in Resources */,
+				1CA205D525541C9400DF204A /* mercedes.jpg in Resources */,
 				1C6482E825516806006158E3 /* football.mp4 in Resources */,
 				1C648300255177F5006158E3 /* korge.png in Resources */,
+				1CA205CF255413F500DF204A /* macbook.png in Resources */,
 				1C6482D8255149DF006158E3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,8 +219,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C1FC83225591CAB007E09DE /* GLContext.swift in Sources */,
 				1C6482D5255149DF006158E3 /* ViewController.swift in Sources */,
 				1C6482D1255149DF006158E3 /* AppDelegate.swift in Sources */,
+				1CA205D32554197C00DF204A /* GLHelper.m in Sources */,
 				1C6482D3255149DF006158E3 /* SceneDelegate.swift in Sources */,
 				1C6482EB2551696C006158E3 /* KorgeViewController.swift in Sources */,
 			);
@@ -336,10 +371,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A2W4M4RMYJ;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "${PROJECT_DIR}/../VideoOnKorge/build/bin/iosArm64/debugFramework";
+				FRAMEWORK_SEARCH_PATHS = "${PROJECT_DIR}/../VideoOnKorge/build/bin/iosX64/debugFramework";
 				INFOPLIST_FILE = SampleApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -348,6 +384,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rohansanap.SampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SampleApp/SampleApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -358,10 +396,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A2W4M4RMYJ;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "${PROJECT_DIR}/../VideoOnKorge/build/bin/iosArm64/debugFramework";
+				FRAMEWORK_SEARCH_PATHS = "${PROJECT_DIR}/../VideoOnKorge/build/bin/iosX64/debugFramework";
 				INFOPLIST_FILE = SampleApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -370,6 +409,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rohansanap.SampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SampleApp/SampleApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

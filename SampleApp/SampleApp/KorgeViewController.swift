@@ -15,6 +15,7 @@ class KorgeViewController: GLKViewController {
   
   var gameWindow2: MyIosGameWindow2?
   var rootGameMain: RootGameMain?
+  var touches = [UITouch]()
   
   var isInitialized = false
   var reshape = false
@@ -29,10 +30,19 @@ class KorgeViewController: GLKViewController {
     self.rootGameMain = RootGameMain()
     
     setupGL()
+    
+//    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//      let imgURL = Bundle.main.url(forResource: "mercedes", withExtension: "jpg")!
+//      let image = UIImage(contentsOfFile: imgURL.path)!
+//      let textureID = GLHelper.createTexture(from: image)
+//      
+//      
+//      MainKt.updateTexture(name: UInt32(textureID), width: 512, height: 512)
+//    }
   }
   
   private func setupGL() {
-    context = EAGLContext(api: .openGLES3)
+    context = GLContext.shared
     EAGLContext.setCurrent(context)
 
     if let view = self.view as? GLKView, let context = context {
@@ -42,7 +52,6 @@ class KorgeViewController: GLKViewController {
   }
   
   override func glkView(_ view: GLKView, drawIn rect: CGRect) {
-    
     if !self.isInitialized {
       self.isInitialized = true
       self.gameWindow2?.gameWindow.dispatchInitEvent()
@@ -58,6 +67,48 @@ class KorgeViewController: GLKViewController {
     }
     
     self.gameWindow2?.gameWindow.frame()
+  }
+  
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    self.touches.removeAll()
+    self.gameWindow2?.gameWindow.dispatchTouchEventStartStart()
+    self.addTouches(touches: touches)
+    self.gameWindow2?.gameWindow.dispatchTouchEventEnd()
+  }
+  
+  override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    self.gameWindow2?.gameWindow.dispatchTouchEventStartMove()
+    self.addTouches(touches: touches)
+    self.gameWindow2?.gameWindow.dispatchTouchEventEnd()
+  }
+  
+  override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    self.gameWindow2?.gameWindow.dispatchTouchEventStartEnd()
+    self.addTouches(touches: touches)
+    self.gameWindow2?.gameWindow.dispatchTouchEventEnd()
+  }
+  
+  func addTouches(touches: Set<UITouch>) {
+    for touch in touches {
+      let point = touch.location(in: self.view)
+      var index = -1
+      
+      for n in 0..<self.touches.count {
+        if self.touches[n] == touch {
+          index = n
+          break
+        }
+      }
+      
+      if index == -1 {
+        index = self.touches.count
+        self.touches.append(touch)
+      }
+      
+      self.gameWindow2?.gameWindow.dispatchTouchEventAddTouch(id: Int32(index),
+                                                              x: Double(point.x * self.view.contentScaleFactor),
+                                                              y: Double(point.y * self.view.contentScaleFactor))
+    }
   }
 }
 
