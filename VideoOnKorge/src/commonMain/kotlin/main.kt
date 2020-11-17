@@ -115,12 +115,6 @@ inline fun Container.rsImage(
 		texture: Bitmap, anchorX: Double = 0.0, anchorY: Double = 0.0, callback: @ViewDslMarker Image.() -> Unit = {}
 ): Image = RSImage(texture).addTo(this, callback)
 
-//interface RSFoo {
-//	fun sampleMethod(): RSNativeImage
-//}
-//
-//var mayank: RSFoo? = null
-
 var mayank: (() -> RSNativeImage)? = null
 
 

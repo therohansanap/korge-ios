@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C1288F1255EC1FC00D0BE3E /* GameMain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CA205C62553E0AE00DF204A /* GameMain.framework */; };
+		1C1288F2255EC1FC00D0BE3E /* GameMain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1CA205C62553E0AE00DF204A /* GameMain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1C1FC83225591CAB007E09DE /* GLContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1FC83125591CAB007E09DE /* GLContext.swift */; };
 		1C6482D1255149DF006158E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6482D0255149DF006158E3 /* AppDelegate.swift */; };
 		1C6482D3255149DF006158E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6482D2255149DF006158E3 /* SceneDelegate.swift */; };
@@ -20,19 +22,18 @@
 		1CA205CF255413F500DF204A /* macbook.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CA205CE255413F500DF204A /* macbook.png */; };
 		1CA205D32554197C00DF204A /* GLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CA205D22554197C00DF204A /* GLHelper.m */; };
 		1CA205D525541C9400DF204A /* mercedes.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1CA205D425541C9400DF204A /* mercedes.jpg */; };
-		1CD981F425554B05003A5032 /* GameMain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6482EE255172B2006158E3 /* GameMain.framework */; };
-		1CD981F525554B05003A5032 /* GameMain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6482EE255172B2006158E3 /* GameMain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1CD5A7E1255CF8C800E80A3D /* VideoRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD5A7E0255CF8C800E80A3D /* VideoRecorder.swift */; };
 		1CD981F82555554F003A5032 /* football-small.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1CD981F72555554F003A5032 /* football-small.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		1CD981F625554B05003A5032 /* Embed Frameworks */ = {
+		1C1288F3255EC1FC00D0BE3E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1CD981F525554B05003A5032 /* GameMain.framework in Embed Frameworks */,
+				1C1288F2255EC1FC00D0BE3E /* GameMain.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,6 +60,7 @@
 		1CA205D12554197C00DF204A /* GLHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLHelper.h; sourceTree = "<group>"; };
 		1CA205D22554197C00DF204A /* GLHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLHelper.m; sourceTree = "<group>"; };
 		1CA205D425541C9400DF204A /* mercedes.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mercedes.jpg; sourceTree = "<group>"; };
+		1CD5A7E0255CF8C800E80A3D /* VideoRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoRecorder.swift; sourceTree = "<group>"; };
 		1CD981F72555554F003A5032 /* football-small.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "football-small.mp4"; sourceTree = "<group>"; };
 		1CF2FE9925556460003FB734 /* commonMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = commonMain; path = ../../VideoOnKorge/src/commonMain; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,7 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CD981F425554B05003A5032 /* GameMain.framework in Frameworks */,
+				1C1288F1255EC1FC00D0BE3E /* GameMain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +107,7 @@
 				1CA205D22554197C00DF204A /* GLHelper.m */,
 				1C6482EA2551696C006158E3 /* KorgeViewController.swift */,
 				1C6482D6255149DF006158E3 /* Main.storyboard */,
+				1CD5A7DF255CF8A100E80A3D /* export */,
 				1C6482D9255149E0006158E3 /* Assets.xcassets */,
 				1C6482DB255149E0006158E3 /* LaunchScreen.storyboard */,
 				1C6482DE255149E0006158E3 /* Info.plist */,
@@ -134,6 +137,14 @@
 			path = assets;
 			sourceTree = "<group>";
 		};
+		1CD5A7DF255CF8A100E80A3D /* export */ = {
+			isa = PBXGroup;
+			children = (
+				1CD5A7E0255CF8C800E80A3D /* VideoRecorder.swift */,
+			);
+			path = export;
+			sourceTree = "<group>";
+		};
 		1CF2FE9825556440003FB734 /* Kotlin */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,7 +163,7 @@
 				1C6482C9255149DF006158E3 /* Sources */,
 				1C6482CB255149DF006158E3 /* Resources */,
 				1C6482CA255149DF006158E3 /* Frameworks */,
-				1CD981F625554B05003A5032 /* Embed Frameworks */,
+				1C1288F3255EC1FC00D0BE3E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -224,6 +235,7 @@
 				1C6482D1255149DF006158E3 /* AppDelegate.swift in Sources */,
 				1CA205D32554197C00DF204A /* GLHelper.m in Sources */,
 				1C6482D3255149DF006158E3 /* SceneDelegate.swift in Sources */,
+				1CD5A7E1255CF8C800E80A3D /* VideoRecorder.swift in Sources */,
 				1C6482EB2551696C006158E3 /* KorgeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,7 +387,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A2W4M4RMYJ;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "${PROJECT_DIR}/../VideoOnKorge/build/bin/iosX64/debugFramework";
+				FRAMEWORK_SEARCH_PATHS = "${PROJECT_DIR}/../VideoOnKorge/build/bin/iosArm64/debugFramework";
 				INFOPLIST_FILE = SampleApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -400,7 +412,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A2W4M4RMYJ;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "${PROJECT_DIR}/../VideoOnKorge/build/bin/iosX64/debugFramework";
+				FRAMEWORK_SEARCH_PATHS = "${PROJECT_DIR}/../VideoOnKorge/build/bin/iosArm64/debugFramework";
 				INFOPLIST_FILE = SampleApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

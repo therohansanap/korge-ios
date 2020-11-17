@@ -38,6 +38,11 @@ class ViewController: UIViewController {
   
   let context = GLContext.shared
   var textureCache: CVOpenGLESTextureCache?
+  
+  var i = 0
+  
+  
+  
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -158,13 +163,43 @@ class ViewController: UIViewController {
 
 //==============================================================================
     
-    MainKt.mayank = getFrame
+//    MainKt.mayank = getFrame
+    
+//==============================================================================
+    
+//    if (i % 2 == 0) {
+//      MainKt.mayank = getFrame
+//    } else {
+//       MainKt.mayank = nil
+//    }
+//
+//    i += 1
+    
+//==============================================================================
+    
+    
+//    videoRecorder?.startRecording()
+//    iterateForRecording()
+    
+//==============================================================================
+    if !korgeVC.startRecording {
+      korgeVC.startRecording = true
+    }else {
+      korgeVC.startRecording = false
+      korgeVC.videoRecorder?.endRecording {
+        print("Video recording done")
+      }
+    }
+    
+//==============================================================================
   }
   
   func getRGBATexture(for pixelBuffer: CVPixelBuffer) -> CVOpenGLESTexture? {
     var texture: CVOpenGLESTexture?
     
     guard let textureCache = textureCache else { return nil }
+    
+    print(pixelBuffer)
     
     CVOpenGLESTextureCacheFlush(textureCache, 0)
     
