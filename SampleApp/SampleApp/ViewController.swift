@@ -13,7 +13,6 @@ import GameMain
 class ViewController: UIViewController {
 
   @IBOutlet weak var containerView: UIView!
-  @IBOutlet weak var recordButton: UIButton!
   
   lazy var korgeVC: KorgeViewController = {
     let vc = storyboard!.instantiateViewController(identifier: "korgeVC") as! KorgeViewController
