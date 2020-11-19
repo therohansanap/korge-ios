@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,8 +25,8 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWl-km-2vj">
-                                <rect key="frame" x="182" y="802" width="50" height="30"/>
-                                <state key="normal" title="Tap Me"/>
+                                <rect key="frame" x="20" y="802" width="30" height="30"/>
+                                <state key="normal" title="Play"/>
                                 <connections>
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="178-IO-0EO"/>
                                 </connections>
@@ -35,10 +36,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ukT-Wy-UjO" secondAttribute="trailing" id="7P3-By-b7G"/>
-                            <constraint firstItem="AWl-km-2vj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RLd-JJ-mfi"/>
                             <constraint firstItem="ukT-Wy-UjO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="RNq-ah-7sl"/>
                             <constraint firstItem="ukT-Wy-UjO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ic6-B0-9vm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="AWl-km-2vj" secondAttribute="bottom" constant="30" id="mRH-Bc-x9S"/>
+                            <constraint firstItem="AWl-km-2vj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="tkj-FU-qDL"/>
                         </constraints>
                     </view>
                     <connections>

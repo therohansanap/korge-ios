@@ -13,6 +13,7 @@ import GameMain
 class ViewController: UIViewController {
 
   @IBOutlet weak var containerView: UIView!
+  @IBOutlet weak var recordButton: UIButton!
   
   lazy var korgeVC: KorgeViewController = {
     let vc = storyboard!.instantiateViewController(identifier: "korgeVC") as! KorgeViewController
@@ -25,7 +26,7 @@ class ViewController: UIViewController {
   
   let outputSettings: [String: Any] = [
     kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA,
-    kCVPixelBufferOpenGLESCompatibilityKey as String: true,
+    kCVPixelBufferOpenGLESCompatibilityKey as String: true
   ]
   
   lazy var trackOutput: AVAssetReaderTrackOutput = {
@@ -41,8 +42,8 @@ class ViewController: UIViewController {
   
   var i = 0
   
-  
-  
+  var recordingTimer: Timer?
+  var recordingTimeTracker: TimeInterval = 0
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -65,6 +66,21 @@ class ViewController: UIViewController {
     if err != noErr {
       print("Error - \(err)")
     }
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    let alertController = UIAlertController(
+      title: "Important",
+      message: """
+      Make sure you tap the Korge image on the display before doing anything.
+      This is to make connection between the global variable and the image view object in Korge layer.
+      Check debugging console on Xcode for connection confirmation.
+      """,
+      preferredStyle: .alert)
+    let defaultAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+    alertController.addAction(defaultAction)
+    present(alertController, animated: true, completion: nil)
   }
   
   @objc func timerInvocation() {
@@ -94,61 +110,51 @@ class ViewController: UIViewController {
                          width: Int32(width),
                          height: Int32(height),
                          target: KotlinInt(int: Int32(target)))
-    
-//    var ll: [GLfloat] = [-1, -1]
-//    var lr: [GLfloat] = [-1, -1]
-//    var ul: [GLfloat] = [-1, -1]
-//    var ur: [GLfloat] = [-1, -1]
-//    let coords = CVOpenGLESTextureGetCleanTexCoords(texture, &ll, &lr, &ur, &ul)
-//    print("\(ll) \(lr) \(ur) \(ul)")
   }
   
-  func getFrame() -> RSNativeImage {
+  func getFrame() -> RSNativeImage? {
     print(#function)
     guard let sampleBuffer = trackOutput.copyNextSampleBuffer() else {
       print("Could not get sample buffer")
-      fatalError()
+      return nil
     }
     
     guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
       print("Could not get image buffer")
-      fatalError()
+      return nil
     }
     
     let pixelBuffer = imageBuffer as CVPixelBuffer
     
     guard let texture = getRGBATexture(for: pixelBuffer) else {
       print("returned from here")
-      fatalError()
+      return nil
     }
     
     let target = CVOpenGLESTextureGetTarget(texture)
     let id = CVOpenGLESTextureGetName(texture)
     let width = CVPixelBufferGetWidth(pixelBuffer)
     let height = CVPixelBufferGetHeight(pixelBuffer)
-    print(width, height)
     let nativeImage = RSNativeImage(width: Int32(width),
                                     height: Int32(height),
                                     name2: id,
                                     target2: KotlinInt(int: Int32(target)))
-    print(nativeImage.forcedTexId)
-    
     return nativeImage
   }
   
   @IBAction func buttonTapped(_ sender: UIButton) {
-//    if let timer = timer, timer.isValid {
-//      timer.invalidate()
-//    }else {
-//      self.timer = Timer.scheduledTimer(timeInterval: 0.0416666,
-//                                        target: self,
-//                                        selector: #selector(timerInvocation),
-//                                        userInfo: nil,
-//                                        repeats: true)
-//    }
+//============================== Trial - 1 ==========================================
+    if let timer = timer, timer.isValid {
+      timer.invalidate()
+    }else {
+      self.timer = Timer.scheduledTimer(timeInterval: 0.0416666,
+                                        target: self,
+                                        selector: #selector(timerInvocation),
+                                        userInfo: nil,
+                                        repeats: true)
+    }
     
-//==============================================================================
-    
+//=============================== Trial - 2 ==========================================
 //    let imgURL = Bundle.main.url(forResource: "mercedes", withExtension: "jpg")!
 //    let image = UIImage(contentsOfFile: imgURL.path)!
 //    let textureID = GLHelper.createTexture(from: image)
@@ -156,16 +162,13 @@ class ViewController: UIViewController {
 //
 //    MainKt.updateTexture(name: UInt32(textureID), width: 512, height: 512, target: KotlinInt(int: Int32(GLenum(GL_TEXTURE_2D))))
     
-//==============================================================================
-    
-    
+//=============================== Trial - 3 ==========================================
 //    timerInvocation()
 
-//==============================================================================
-    
+//=============================== Trial - 4 ==========================================
 //    MainKt.mayank = getFrame
     
-//==============================================================================
+//=============================== Trial - 5 ==========================================
     
 //    if (i % 2 == 0) {
 //      MainKt.mayank = getFrame
@@ -174,24 +177,7 @@ class ViewController: UIViewController {
 //    }
 //
 //    i += 1
-    
-//==============================================================================
-    
-    
-//    videoRecorder?.startRecording()
-//    iterateForRecording()
-    
-//==============================================================================
-    if !korgeVC.startRecording {
-      korgeVC.startRecording = true
-    }else {
-      korgeVC.startRecording = false
-      korgeVC.videoRecorder?.endRecording {
-        print("Video recording done")
-      }
-    }
-    
-//==============================================================================
+
   }
   
   func getRGBATexture(for pixelBuffer: CVPixelBuffer) -> CVOpenGLESTexture? {
@@ -211,7 +197,7 @@ class ViewController: UIViewController {
                                                            GLint(GL_RGBA),
                                                            Int32(CVPixelBufferGetWidth(pixelBuffer)),
                                                            Int32(CVPixelBufferGetHeight(pixelBuffer)),
-                                                           GLenum(GL_RGBA),
+                                                           GLenum(GL_BGRA),
                                                            GLenum(GL_UNSIGNED_BYTE),
                                                            0,
                                                            &texture)

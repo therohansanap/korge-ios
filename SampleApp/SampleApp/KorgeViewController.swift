@@ -20,17 +20,6 @@ class KorgeViewController: GLKViewController {
   var isInitialized = false
   var reshape = false
   
-  let videoRecorder = VideoRecorder(size: CGSize(width: 512, height: 512))
-  var time: TimeInterval = 0.0
-  
-  var startRecording = false {
-    didSet {
-      if startRecording {
-        videoRecorder?.startRecording()
-      }
-    }
-  }
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -41,15 +30,6 @@ class KorgeViewController: GLKViewController {
     self.rootGameMain = RootGameMain()
     
     setupGL()
-    
-//    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-//      let imgURL = Bundle.main.url(forResource: "mercedes", withExtension: "jpg")!
-//      let image = UIImage(contentsOfFile: imgURL.path)!
-//      let textureID = GLHelper.createTexture(from: image)
-//      
-//      
-//      MainKt.updateTexture(name: UInt32(textureID), width: 512, height: 512)
-//    }
   }
   
   private func setupGL() {
@@ -78,11 +58,6 @@ class KorgeViewController: GLKViewController {
     }
     
     self.gameWindow2?.gameWindow.frame()
-    
-    if startRecording {
-      videoRecorder?.writeFrame(time: time)
-      time += 0.01666667
-    }
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
