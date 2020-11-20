@@ -143,15 +143,15 @@ class ViewController: UIViewController {
   
   @IBAction func buttonTapped(_ sender: UIButton) {
 //============================== Trial - 1 ==========================================
-    if let timer = timer, timer.isValid {
-      timer.invalidate()
-    }else {
-      self.timer = Timer.scheduledTimer(timeInterval: 0.0416666,
-                                        target: self,
-                                        selector: #selector(timerInvocation),
-                                        userInfo: nil,
-                                        repeats: true)
-    }
+//    if let timer = timer, timer.isValid {
+//      timer.invalidate()
+//    }else {
+//      self.timer = Timer.scheduledTimer(timeInterval: 0.0416666,
+//                                        target: self,
+//                                        selector: #selector(timerInvocation),
+//                                        userInfo: nil,
+//                                        repeats: true)
+//    }
     
 //=============================== Trial - 2 ==========================================
 //    let imgURL = Bundle.main.url(forResource: "mercedes", withExtension: "jpg")!
@@ -169,13 +169,13 @@ class ViewController: UIViewController {
     
 //=============================== Trial - 5 ==========================================
     
-//    if (i % 2 == 0) {
-//      MainKt.mayank = getFrame
-//    } else {
-//       MainKt.mayank = nil
-//    }
-//
-//    i += 1
+    if (i % 2 == 0) {
+      MainKt.mayank = getFrame
+    } else {
+       MainKt.mayank = nil
+    }
+
+    i += 1
 
   }
   
