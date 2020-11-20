@@ -20,6 +20,17 @@ class KorgeViewController: GLKViewController {
   var isInitialized = false
   var reshape = false
   
+  let videoRecorder = VideoRecorder(size: CGSize(width: 512, height: 512))
+  var time: TimeInterval = 0.0
+  
+  var startRecording = false {
+    didSet {
+      if startRecording {
+        videoRecorder?.startRecording()
+      }
+    }
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -58,6 +69,11 @@ class KorgeViewController: GLKViewController {
     }
     
     self.gameWindow2?.gameWindow.frame()
+    
+    if startRecording {
+      videoRecorder?.writeFrame(time: time)
+      time += 0.01666667
+    }
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

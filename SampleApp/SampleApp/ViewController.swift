@@ -171,8 +171,13 @@ class ViewController: UIViewController {
     
     if (i % 2 == 0) {
       MainKt.mayank = getFrame
+      korgeVC.startRecording = true
     } else {
-       MainKt.mayank = nil
+      korgeVC.startRecording = false
+      korgeVC.videoRecorder?.endRecording {
+        print("Video exported")
+      }
+      MainKt.mayank = nil
     }
 
     i += 1
