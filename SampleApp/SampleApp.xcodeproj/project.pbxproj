@@ -12,7 +12,7 @@
 		1C27CA3B256689DE007C31A0 /* GameMain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6482EE255172B2006158E3 /* GameMain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1C6482D1255149DF006158E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6482D0255149DF006158E3 /* AppDelegate.swift */; };
 		1C6482D3255149DF006158E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6482D2255149DF006158E3 /* SceneDelegate.swift */; };
-		1C6482D5255149DF006158E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6482D4255149DF006158E3 /* ViewController.swift */; };
+		1C6482D5255149DF006158E3 /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6482D4255149DF006158E3 /* ViewController1.swift */; };
 		1C6482D8255149DF006158E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C6482D6255149DF006158E3 /* Main.storyboard */; };
 		1C6482DA255149E0006158E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C6482D9255149E0006158E3 /* Assets.xcassets */; };
 		1C6482DD255149E0006158E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C6482DB255149E0006158E3 /* LaunchScreen.storyboard */; };
@@ -24,6 +24,7 @@
 		1CA205D525541C9400DF204A /* mercedes.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1CA205D425541C9400DF204A /* mercedes.jpg */; };
 		1CD981F82555554F003A5032 /* football-small.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1CD981F72555554F003A5032 /* football-small.mp4 */; };
 		1CECB2F72567B6B9002B6DEC /* VideoRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECB2F62567B6B9002B6DEC /* VideoRecorder.swift */; };
+		1CECB2F92567C6B3002B6DEC /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECB2F82567C6B3002B6DEC /* ViewController2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,7 +48,7 @@
 		1C6482CD255149DF006158E3 /* SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C6482D0255149DF006158E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C6482D2255149DF006158E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1C6482D4255149DF006158E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1C6482D4255149DF006158E3 /* ViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
 		1C6482D7255149DF006158E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1C6482D9255149E0006158E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C6482DC255149E0006158E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,6 +65,7 @@
 		1CA205D425541C9400DF204A /* mercedes.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mercedes.jpg; sourceTree = "<group>"; };
 		1CD981F72555554F003A5032 /* football-small.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "football-small.mp4"; sourceTree = "<group>"; };
 		1CECB2F62567B6B9002B6DEC /* VideoRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoRecorder.swift; sourceTree = "<group>"; };
+		1CECB2F82567C6B3002B6DEC /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		1CF2FE9925556460003FB734 /* commonMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = commonMain; path = ../../VideoOnKorge/src/commonMain; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,7 +115,8 @@
 			children = (
 				1C6482D0255149DF006158E3 /* AppDelegate.swift */,
 				1C6482D2255149DF006158E3 /* SceneDelegate.swift */,
-				1C6482D4255149DF006158E3 /* ViewController.swift */,
+				1C6482D4255149DF006158E3 /* ViewController1.swift */,
+				1CECB2F82567C6B3002B6DEC /* ViewController2.swift */,
 				1C1FC83125591CAB007E09DE /* GLContext.swift */,
 				1CA205D12554197C00DF204A /* GLHelper.h */,
 				1CA205D22554197C00DF204A /* GLHelper.m */,
@@ -236,7 +239,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C1FC83225591CAB007E09DE /* GLContext.swift in Sources */,
-				1C6482D5255149DF006158E3 /* ViewController.swift in Sources */,
+				1CECB2F92567C6B3002B6DEC /* ViewController2.swift in Sources */,
+				1C6482D5255149DF006158E3 /* ViewController1.swift in Sources */,
 				1C6482D1255149DF006158E3 /* AppDelegate.swift in Sources */,
 				1CA205D32554197C00DF204A /* GLHelper.m in Sources */,
 				1C6482D3255149DF006158E3 /* SceneDelegate.swift in Sources */,
