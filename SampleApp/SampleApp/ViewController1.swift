@@ -43,6 +43,8 @@ class ViewController1: UIViewController {
   
   var recordingTimer: Timer?
   var recordingTimeTracker: TimeInterval = 0
+  
+  var nativeImages = [GLuint: RSNativeImage]()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -134,11 +136,17 @@ class ViewController1: UIViewController {
     let id = CVOpenGLESTextureGetName(texture)
     let width = CVPixelBufferGetWidth(pixelBuffer)
     let height = CVPixelBufferGetHeight(pixelBuffer)
-    let nativeImage = RSNativeImage(width: Int32(width),
-                                    height: Int32(height),
-                                    name2: id,
-                                    target2: KotlinInt(int: Int32(target)))
-    return nativeImage
+    
+    if let nativeImage = nativeImages[id] {
+      return nativeImage
+    }else {
+      let nativeImage = RSNativeImage(width: Int32(width),
+                                      height: Int32(height),
+                                      name2: id,
+                                      target2: KotlinInt(int: Int32(target)))
+      nativeImages[id] = nativeImage
+      return nativeImage
+    }
   }
   
   @IBAction func buttonTapped(_ sender: UIButton) {
