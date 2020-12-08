@@ -102,27 +102,36 @@ class ViewController3: UIViewController {
     
     timer = Timer.scheduledTimer(timeInterval: 0.0333,
                                  target: self,
-                                 selector: #selector(playTimer(_:)),
+                                 selector: #selector(playTimerInvocation(_:)),
                                  userInfo: nil,
                                  repeats: true)
-    
-    let currentTime = CMClock.hostTimeClock.time
-    let currentTimePlus5 = CMTimeAdd(CMClock.hostTimeClock.time, CMTime(seconds: 5, preferredTimescale: 600))
-    let currentTimePlus10 = CMTimeAdd(CMClock.hostTimeClock.time, CMTime(seconds: 10, preferredTimescale: 600))
-    player1.setRate(1.0, time: .zero, atHostTime: currentTime)
-    player2.setRate(1.0, time: .zero, atHostTime: currentTimePlus5)
-    player3.setRate(1.0, time: .zero, atHostTime: currentTimePlus10)
-    
   }
   
   @IBAction func exportTapped(_ sender: UIButton) {
+    print(CMTimeGetSeconds(playerItem1.duration))
+    print(CMTimeGetSeconds(playerItem2.duration))
+    print(CMTimeGetSeconds(playerItem3.duration))
   }
   
   @objc
-  func playTimer(_ sender: Timer) {
+  func playTimerInvocation(_ sender: Timer) {
+    
+    //This condition will be executed only once
+    if MainKt.sceneTime == 0 {
+      let currentTime = CMClock.hostTimeClock.time
+      let currentTimePlus5 = CMTimeAdd(CMClock.hostTimeClock.time, CMTime(seconds: 5, preferredTimescale: 600))
+      let currentTimePlus10 = CMTimeAdd(CMClock.hostTimeClock.time, CMTime(seconds: 10, preferredTimescale: 600))
+      player1.setRate(1.0, time: .zero, atHostTime: currentTime)
+      player2.setRate(1.0, time: .zero, atHostTime: currentTimePlus5)
+      player3.setRate(1.0, time: .zero, atHostTime: currentTimePlus10)
+    }
+
     guard MainKt.sceneTime <= 15 else {
       MainKt.sceneTime = 0
       timer?.invalidate()
+      MainKt.videoView1?.callbackForVideoFrame = nil
+      MainKt.videoView2?.callbackForVideoFrame = nil
+      MainKt.videoView3?.callbackForVideoFrame = nil
       korgeVC.isPaused = false
       return
     }
@@ -141,24 +150,52 @@ class ViewController3: UIViewController {
   func getFrame(sceneTime: KotlinDouble) -> RSNativeImage? {
     let currentTime = CACurrentMediaTime()
     var itemVideoOutput: AVPlayerItemVideoOutput!
-    
+
+    var itemSelected = 0
     switch sceneTime.doubleValue {
-    case 0...5        : itemVideoOutput = itemVideoOutput1
-    case 5.0001...10  : itemVideoOutput = itemVideoOutput2
-    case 10.0001...15 : itemVideoOutput = itemVideoOutput3
-    default           : return nil
-    }
-    
-    let itemTime = itemVideoOutput.itemTime(forHostTime: currentTime)
-    
-    if itemVideoOutput.hasNewPixelBuffer(forItemTime: itemTime),
-       let pixelBuffer = itemVideoOutput.copyPixelBuffer(forItemTime: itemTime, itemTimeForDisplay: nil),
-       let texture = getRGBATexture(for: pixelBuffer),
-       let nativeImage = getRSNativeImage(from: texture, pixelBuffer: pixelBuffer) {
-      return nativeImage
-    }else {
+    case 0...5:
+      itemVideoOutput = itemVideoOutput1
+      itemSelected = 1
+    case 5.0001...10:
+      itemVideoOutput = itemVideoOutput2
+      itemSelected = 2
+    case 10.0001...15:
+      itemVideoOutput = itemVideoOutput3
+      itemSelected = 3
+    default:
+      print("Should never come here")
       return nil
     }
+
+    let itemTime = itemVideoOutput.itemTime(forHostTime: currentTime)
+
+    let string = """
+    SceneTime - \(sceneTime.doubleValue)
+    ItemSelected - \(itemSelected)
+    ItemTime - \(CMTimeGetSeconds(itemTime))
+    """
+    print(string)
+
+    guard itemVideoOutput.hasNewPixelBuffer(forItemTime: itemTime) else {
+      print("hasNewPixelBuffer = false")
+      return nil
+    }
+
+    guard let pixelBuffer = itemVideoOutput.copyPixelBuffer(forItemTime: itemTime, itemTimeForDisplay: nil) else {
+      print("copyPixelBuffer failed")
+      return nil
+    }
+
+    guard let texture = getRGBATexture(for: pixelBuffer) else {
+      return nil
+    }
+
+    guard let nativeImage = getRSNativeImage(from: texture, pixelBuffer: pixelBuffer) else {
+      print("getRSNativeImage failed")
+      return nil
+    }
+
+    return nativeImage
   }
   
   private func getRGBATexture(for pixelBuffer: CVPixelBuffer) -> CVOpenGLESTexture? {
