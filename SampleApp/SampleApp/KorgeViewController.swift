@@ -11,7 +11,7 @@ import GameMain
 
 class KorgeViewController: GLKViewController {
   
-  var context: EAGLContext?
+  var context: EAGLContext? = GLContext.shared
   
   var gameWindow2: MyIosGameWindow2?
   var rootGameMain: RootGameMain?
@@ -69,11 +69,6 @@ class KorgeViewController: GLKViewController {
     }
     
     self.gameWindow2?.gameWindow.frame()
-    
-    if startRecording {
-      videoRecorder?.writeFrame(time: time)
-      time += 0.01666667
-    }
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -116,6 +111,24 @@ class KorgeViewController: GLKViewController {
                                                               x: Double(point.x * self.view.contentScaleFactor),
                                                               y: Double(point.y * self.view.contentScaleFactor))
     }
+  }
+  
+  func singleRenderCall() {
+    if !self.isInitialized {
+      self.isInitialized = true
+      self.gameWindow2?.gameWindow.dispatchInitEvent()
+      self.rootGameMain?.runMain()
+      self.reshape = true;
+    }
+    
+    let width = self.view.bounds.size.width * self.view.contentScaleFactor
+    let height = self.view.bounds.size.height * self.view.contentScaleFactor
+    if self.reshape {
+      self.reshape = false
+      self.gameWindow2?.gameWindow.dispatchReshapeEvent(x: 0, y: 0, width: Int32(width), height: Int32(height))
+    }
+    
+    self.gameWindow2?.gameWindow.frame()
   }
 }
 
