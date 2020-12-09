@@ -88,7 +88,7 @@ class ViewController3: UIViewController {
     korgeVC.didMove(toParent: self)
   }
   
-  @IBAction func playTapped(_ sender: UIButton) {
+  /*@IBAction func playTapped(_ sender: UIButton) {
     if timer != nil {
       timer?.invalidate()
       korgeVC.isPaused = false
@@ -100,12 +100,18 @@ class ViewController3: UIViewController {
     MainKt.videoView2?.callbackForVideoFrame = getFrame
     MainKt.videoView3?.callbackForVideoFrame = getFrame
     
+    previousHostTime = CACurrentMediaTime()
     timer = Timer.scheduledTimer(timeInterval: 0.0333,
                                  target: self,
                                  selector: #selector(playTimerInvocation(_:)),
                                  userInfo: nil,
                                  repeats: true)
+  }*/
+  
+  @IBAction func playTapped(_ sender: UIButton) {
+    korgeVC.play()
   }
+  
   
   @IBAction func exportTapped(_ sender: UIButton) {
     print(CMTimeGetSeconds(playerItem1.duration))
@@ -115,16 +121,23 @@ class ViewController3: UIViewController {
   
   @objc
   func playTimerInvocation(_ sender: Timer) {
+//    //This condition will be executed only once
+//    if MainKt.sceneTime == 0 {
+//      let currentTime = CMClock.hostTimeClock.time
+//      let currentTimePlus5 = CMTimeAdd(currentTime, CMTime(seconds: 5, preferredTimescale: 600))
+//      let currentTimePlus10 = CMTimeAdd(currentTime, CMTime(seconds: 10, preferredTimescale: 600))
+//      player1.setRate(1.0, time: .zero, atHostTime: currentTime)
+//      player2.setRate(1.0, time: .zero, atHostTime: currentTimePlus5)
+//      player3.setRate(1.0, time: .zero, atHostTime: currentTimePlus10)
+//    }
     
-    //This condition will be executed only once
-    if MainKt.sceneTime == 0 {
-      let currentTime = CMClock.hostTimeClock.time
-      let currentTimePlus5 = CMTimeAdd(CMClock.hostTimeClock.time, CMTime(seconds: 5, preferredTimescale: 600))
-      let currentTimePlus10 = CMTimeAdd(CMClock.hostTimeClock.time, CMTime(seconds: 10, preferredTimescale: 600))
-      player1.setRate(1.0, time: .zero, atHostTime: currentTime)
-      player2.setRate(1.0, time: .zero, atHostTime: currentTimePlus5)
-      player3.setRate(1.0, time: .zero, atHostTime: currentTimePlus10)
-    }
+//    if MainKt.sceneTime <= 5 && player1.rate == 0 {
+//      player1.play()
+//    }else if MainKt.sceneTime > 5 && MainKt.sceneTime <= 10 && player2.rate == 0 {
+//      player2.play()
+//    }else if MainKt.sceneTime > 10 && MainKt.sceneTime <= 15 && player3.rate == 0 {
+//      player3.play()
+//    }
 
     guard MainKt.sceneTime <= 15 else {
       MainKt.sceneTime = 0
@@ -143,12 +156,17 @@ class ViewController3: UIViewController {
   private func makeCanvasDrawCall() {
     let glView = korgeVC.view as! GLKView
     glView.bindDrawable()
-    korgeVC.singleRenderCall()
+    korgeVC.korgeRenderCall()
     korgeVC.context?.presentRenderbuffer(Int(GL_RENDERBUFFER))
   }
   
+  var previousHostTime: CFTimeInterval = 0
+  
   func getFrame(sceneTime: KotlinDouble) -> RSNativeImage? {
     let currentTime = CACurrentMediaTime()
+    print("🟡 Diff - \(currentTime - previousHostTime)")
+    previousHostTime = currentTime
+
     var itemVideoOutput: AVPlayerItemVideoOutput!
 
     var itemSelected = 0

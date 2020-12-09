@@ -59,6 +59,18 @@ class RSImage(bitmap: Bitmap) : Image(bitmap) {
 	var callbackForVideoFrame: ((sceneTime: Double) -> RSNativeImage?)? = null
 
 	override fun renderInternal(ctx: RenderContext) {
+		/*when {
+			videoView1 === this -> {
+				println("Rendering Video View 1")
+			}
+			videoView2 === this -> {
+				println("Rendering Video View 2")
+			}
+			videoView3 === this -> {
+				println("Rendering Video View 3")
+			}
+		}*/
+
 		val returnedImage = callbackForVideoFrame?.let { it(sceneTime) }
 		if (returnedImage != null) {
 			this.bitmap = returnedImage.slice()

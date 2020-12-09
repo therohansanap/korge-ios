@@ -10,6 +10,9 @@
 		1C1FC83225591CAB007E09DE /* GLContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1FC83125591CAB007E09DE /* GLContext.swift */; };
 		1C27CA3A256689DE007C31A0 /* GameMain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6482EE255172B2006158E3 /* GameMain.framework */; };
 		1C27CA3B256689DE007C31A0 /* GameMain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6482EE255172B2006158E3 /* GameMain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1C2B4C0925808E6A007CB6BE /* video3-24fps.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1C2B4C0625808E6A007CB6BE /* video3-24fps.mp4 */; };
+		1C2B4C0A25808E6A007CB6BE /* video1-30fps.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1C2B4C0725808E6A007CB6BE /* video1-30fps.mp4 */; };
+		1C2B4C0B25808E6A007CB6BE /* video2-60fps.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1C2B4C0825808E6A007CB6BE /* video2-60fps.mp4 */; };
 		1C6482D1255149DF006158E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6482D0255149DF006158E3 /* AppDelegate.swift */; };
 		1C6482D3255149DF006158E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6482D2255149DF006158E3 /* SceneDelegate.swift */; };
 		1C6482D8255149DF006158E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C6482D6255149DF006158E3 /* Main.storyboard */; };
@@ -18,10 +21,8 @@
 		1C6482E825516806006158E3 /* football.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1C6482E725516806006158E3 /* football.mp4 */; };
 		1C6482EB2551696C006158E3 /* KorgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6482EA2551696C006158E3 /* KorgeViewController.swift */; };
 		1C648300255177F5006158E3 /* korge.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C6482FF255177F5006158E3 /* korge.png */; };
-		1C796422257E29B200CEB07D /* video1-30fps.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1C79641F257E29B200CEB07D /* video1-30fps.mp4 */; };
-		1C796423257E29B200CEB07D /* video2-60fps.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1C796420257E29B200CEB07D /* video2-60fps.mp4 */; };
 		1C796426257E2D4000CEB07D /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C796425257E2D4000CEB07D /* ViewController3.swift */; };
-		1C796429257F4FE900CEB07D /* video3-24fps.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1C796428257F4FE900CEB07D /* video3-24fps.mp4 */; };
+		1C895A7F25808A4D001C7604 /* KorgeViewController+TouchHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C895A7E25808A4D001C7604 /* KorgeViewController+TouchHandling.swift */; };
 		1CA205CF255413F500DF204A /* macbook.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CA205CE255413F500DF204A /* macbook.png */; };
 		1CA205D32554197C00DF204A /* GLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CA205D22554197C00DF204A /* GLHelper.m */; };
 		1CA205D525541C9400DF204A /* mercedes.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1CA205D425541C9400DF204A /* mercedes.jpg */; };
@@ -47,6 +48,9 @@
 		1C1FC83125591CAB007E09DE /* GLContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLContext.swift; sourceTree = "<group>"; };
 		1C27CA34256687E0007C31A0 /* GameMain.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = GameMain.framework.dSYM; sourceTree = "<group>"; };
 		1C27CA35256687E0007C31A0 /* GameMain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GameMain.framework; sourceTree = "<group>"; };
+		1C2B4C0625808E6A007CB6BE /* video3-24fps.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "video3-24fps.mp4"; sourceTree = "<group>"; };
+		1C2B4C0725808E6A007CB6BE /* video1-30fps.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "video1-30fps.mp4"; sourceTree = "<group>"; };
+		1C2B4C0825808E6A007CB6BE /* video2-60fps.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "video2-60fps.mp4"; sourceTree = "<group>"; };
 		1C6482CD255149DF006158E3 /* SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C6482D0255149DF006158E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C6482D2255149DF006158E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,10 +62,8 @@
 		1C6482EA2551696C006158E3 /* KorgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KorgeViewController.swift; sourceTree = "<group>"; };
 		1C6482EE255172B2006158E3 /* GameMain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameMain.framework; path = ../VideoOnKorge/build/bin/iosX64/debugFramework/GameMain.framework; sourceTree = "<group>"; };
 		1C6482FF255177F5006158E3 /* korge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = korge.png; path = ../../VideoOnKorge/build/combinedResources/resources/korge.png; sourceTree = "<group>"; };
-		1C79641F257E29B200CEB07D /* video1-30fps.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "video1-30fps.mp4"; sourceTree = "<group>"; };
-		1C796420257E29B200CEB07D /* video2-60fps.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "video2-60fps.mp4"; sourceTree = "<group>"; };
 		1C796425257E2D4000CEB07D /* ViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
-		1C796428257F4FE900CEB07D /* video3-24fps.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "video3-24fps.mp4"; sourceTree = "<group>"; };
+		1C895A7E25808A4D001C7604 /* KorgeViewController+TouchHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KorgeViewController+TouchHandling.swift"; sourceTree = "<group>"; };
 		1CA205C62553E0AE00DF204A /* GameMain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameMain.framework; path = ../VideoOnKorge/build/bin/iosArm64/debugFramework/GameMain.framework; sourceTree = "<group>"; };
 		1CA205CE255413F500DF204A /* macbook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = macbook.png; sourceTree = "<group>"; };
 		1CA205D02554197C00DF204A /* SampleApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SampleApp-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -88,9 +90,9 @@
 		1C11D743257E25AD006AE97E /* videos */ = {
 			isa = PBXGroup;
 			children = (
-				1C79641F257E29B200CEB07D /* video1-30fps.mp4 */,
-				1C796420257E29B200CEB07D /* video2-60fps.mp4 */,
-				1C796428257F4FE900CEB07D /* video3-24fps.mp4 */,
+				1C2B4C0725808E6A007CB6BE /* video1-30fps.mp4 */,
+				1C2B4C0825808E6A007CB6BE /* video2-60fps.mp4 */,
+				1C2B4C0625808E6A007CB6BE /* video3-24fps.mp4 */,
 			);
 			path = videos;
 			sourceTree = "<group>";
@@ -133,7 +135,7 @@
 				1C1FC83125591CAB007E09DE /* GLContext.swift */,
 				1CA205D12554197C00DF204A /* GLHelper.h */,
 				1CA205D22554197C00DF204A /* GLHelper.m */,
-				1C6482EA2551696C006158E3 /* KorgeViewController.swift */,
+				1C895A7D25808A2D001C7604 /* KorgeViewController */,
 				1CECB2F62567B6B9002B6DEC /* VideoRecorder.swift */,
 				1C6482D6255149DF006158E3 /* Main.storyboard */,
 				1C11D743257E25AD006AE97E /* videos */,
@@ -165,6 +167,15 @@
 				1C6482FF255177F5006158E3 /* korge.png */,
 			);
 			path = assets;
+			sourceTree = "<group>";
+		};
+		1C895A7D25808A2D001C7604 /* KorgeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1C6482EA2551696C006158E3 /* KorgeViewController.swift */,
+				1C895A7E25808A4D001C7604 /* KorgeViewController+TouchHandling.swift */,
+			);
+			path = KorgeViewController;
 			sourceTree = "<group>";
 		};
 		1CF2FE9825556440003FB734 /* Kotlin */ = {
@@ -236,14 +247,14 @@
 			files = (
 				1C6482DD255149E0006158E3 /* LaunchScreen.storyboard in Resources */,
 				1C6482DA255149E0006158E3 /* Assets.xcassets in Resources */,
-				1C796423257E29B200CEB07D /* video2-60fps.mp4 in Resources */,
 				1CD981F82555554F003A5032 /* football-small.mp4 in Resources */,
+				1C2B4C0925808E6A007CB6BE /* video3-24fps.mp4 in Resources */,
 				1CA205D525541C9400DF204A /* mercedes.jpg in Resources */,
 				1C6482E825516806006158E3 /* football.mp4 in Resources */,
 				1C648300255177F5006158E3 /* korge.png in Resources */,
-				1C796429257F4FE900CEB07D /* video3-24fps.mp4 in Resources */,
 				1CA205CF255413F500DF204A /* macbook.png in Resources */,
-				1C796422257E29B200CEB07D /* video1-30fps.mp4 in Resources */,
+				1C2B4C0B25808E6A007CB6BE /* video2-60fps.mp4 in Resources */,
+				1C2B4C0A25808E6A007CB6BE /* video1-30fps.mp4 in Resources */,
 				1C6482D8255149DF006158E3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,6 +270,7 @@
 				1C796426257E2D4000CEB07D /* ViewController3.swift in Sources */,
 				1C6482D1255149DF006158E3 /* AppDelegate.swift in Sources */,
 				1CA205D32554197C00DF204A /* GLHelper.m in Sources */,
+				1C895A7F25808A4D001C7604 /* KorgeViewController+TouchHandling.swift in Sources */,
 				1C6482D3255149DF006158E3 /* SceneDelegate.swift in Sources */,
 				1CECB2F72567B6B9002B6DEC /* VideoRecorder.swift in Sources */,
 				1C6482EB2551696C006158E3 /* KorgeViewController.swift in Sources */,
