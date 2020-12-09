@@ -1,4 +1,5 @@
 import com.soywiz.korge.*
+import com.soywiz.korge.animate.animate
 import com.soywiz.korge.render.RenderContext
 import com.soywiz.korge.scene.Module
 import com.soywiz.korge.scene.Scene
@@ -27,14 +28,25 @@ class MyDependency(val value: String)
 class MyScene1(val myDependency: MyDependency) : Scene() {
 
 	override suspend fun Container.sceneInit() {
-		videoView1 = rsImage(resourcesVfs["korge.png"].readBitmap()).xy(0.0, 0.0)
-		videoView2 = rsImage(resourcesVfs["korge.png"].readBitmap()).xy(100.0, 100.0)
-		videoView3 = rsImage(resourcesVfs["korge.png"].readBitmap()).xy(200.0, 200.0)
+		videoView1 = rsImage(resourcesVfs["korge.png"].readBitmap()).anchor(0.5, 0.5).xy(200.0, 200.0)
+		videoView2 = rsImage(resourcesVfs["korge.png"].readBitmap()).anchor(0.5, 0.5).xy(300.0, 300.0)
+		videoView3 = rsImage(resourcesVfs["korge.png"].readBitmap()).anchor(0.5, 0.5).xy(400.0, 400.0)
 
 		addUpdater {
 			videoView1?.visible = sceneTime <= 5
 			videoView2?.visible = (sceneTime > 5) && (sceneTime <= 10)
 			videoView3?.visible = (sceneTime > 10) && (sceneTime <= 15)
+
+			val degreeCalculation = (360.0 / 5.0) * (sceneTime % 5)
+			if (sceneTime <= 5) {
+				videoView1?.rotationDegrees = degreeCalculation
+			}else if ((sceneTime > 5) && (sceneTime <= 10)) {
+				videoView2?.rotationDegrees = degreeCalculation
+			}else if ((sceneTime > 10) && (sceneTime <= 15)) {
+				videoView3?.rotationDegrees = degreeCalculation
+			}
+
+			println("Degree - $degreeCalculation")
 		}
 	}
 }

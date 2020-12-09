@@ -72,6 +72,12 @@
                                     <action selector="playTapped:" destination="V9j-zS-rfq" eventType="touchUpInside" id="VE2-6Z-GrM"/>
                                 </connections>
                             </button>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="nvc-ds-PbD">
+                                <rect key="frame" x="68" y="763" width="262" height="31"/>
+                                <connections>
+                                    <action selector="seekerSeeked:" destination="V9j-zS-rfq" eventType="valueChanged" id="8on-ZI-e1J"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TSu-La-7u3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -80,9 +86,12 @@
                             <constraint firstItem="JWG-Og-kYN" firstAttribute="leading" secondItem="TSu-La-7u3" secondAttribute="leading" constant="20" id="Itc-nr-ffi"/>
                             <constraint firstItem="JWG-Og-kYN" firstAttribute="top" secondItem="flu-MM-nxK" secondAttribute="bottom" constant="20" id="OYY-kc-Xei"/>
                             <constraint firstItem="TSu-La-7u3" firstAttribute="bottom" secondItem="ItP-i3-tAc" secondAttribute="bottom" constant="20" id="dB1-XI-FF3"/>
+                            <constraint firstItem="ItP-i3-tAc" firstAttribute="leading" secondItem="nvc-ds-PbD" secondAttribute="trailing" constant="20" id="g8E-AE-SbJ"/>
+                            <constraint firstItem="nvc-ds-PbD" firstAttribute="centerY" secondItem="JWG-Og-kYN" secondAttribute="centerY" id="hmR-Hd-8op"/>
                             <constraint firstItem="flu-MM-nxK" firstAttribute="top" secondItem="TSu-La-7u3" secondAttribute="top" constant="20" id="p6h-x8-bNv"/>
                             <constraint firstItem="TSu-La-7u3" firstAttribute="trailing" secondItem="ItP-i3-tAc" secondAttribute="trailing" constant="20" id="tVC-Pg-Ozi"/>
                             <constraint firstItem="flu-MM-nxK" firstAttribute="centerX" secondItem="2x1-9q-LJV" secondAttribute="centerX" id="v9c-Vw-YYN"/>
+                            <constraint firstItem="nvc-ds-PbD" firstAttribute="leading" secondItem="JWG-Og-kYN" secondAttribute="trailing" constant="20" id="xcz-Hk-wYd"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="4xx-6L-zcI"/>
@@ -92,7 +101,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FWr-hC-NqY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="942" y="72"/>
+            <point key="canvasLocation" x="940.57971014492762" y="71.651785714285708"/>
         </scene>
     </scenes>
     <resources>

@@ -109,9 +109,19 @@ class ViewController3: UIViewController {
   }*/
   
   @IBAction func playTapped(_ sender: UIButton) {
-    korgeVC.play()
+    let title = sender.title(for: .normal)
+    if title == "Play" {
+      sender.setTitle("Pause", for: .normal)
+      korgeVC.play()
+    }else {
+      sender.setTitle("Play", for: .normal)
+      korgeVC.pause()
+    }
   }
   
+  @IBAction func seekerSeeked(_ sender: UISlider) {
+    korgeVC.seek(unitPercentage: sender.value)
+  }
   
   @IBAction func exportTapped(_ sender: UIButton) {
     print(CMTimeGetSeconds(playerItem1.duration))

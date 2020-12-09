@@ -22,16 +22,11 @@ class KorgeViewController: GLKViewController {
   
   var isPlaying: Bool = false
   var beginPlayingTime: CFTimeInterval = 0
+  var seekOffset = 0.0
   var timeline = Timeline()
-  
-  private var _originalPreferredFramesPerSecond: Int = 0
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-//    _originalPreferredFramesPerSecond = preferredFramesPerSecond
-//    preferredFramesPerSecond = 1
-//    resumeOnDidBecomeActive = false
     
     self.isInitialized = false
     self.reshape = true
@@ -53,20 +48,24 @@ class KorgeViewController: GLKViewController {
   }
   
   override func glkView(_ view: GLKView, drawIn rect: CGRect) {
+    print(#function, CACurrentMediaTime())
     if isPlaying {
       let currentTime = CACurrentMediaTime()
-      var diff = currentTime - beginPlayingTime
+      var diff = currentTime - beginPlayingTime + seekOffset
       diff = diff < 0 ? 0 : (diff > timeline.duration ? timeline.duration : diff)
       timeline.currentTime = diff
     }
     
-    MainKt.sceneTime = timeline.currentTime
-
-    print("Timeline current time -> \(timeline.currentTime)s")
+    
     self.korgeRenderCall()
   }
   
   func korgeRenderCall() {
+    MainKt.sceneTime = timeline.currentTime
+
+    print("Timeline current time -> \(timeline.currentTime)s")
+    
+    
     if !self.isInitialized {
       self.isInitialized = true
       self.gameWindow2?.gameWindow.dispatchInitEvent()
@@ -89,29 +88,25 @@ class KorgeViewController: GLKViewController {
     isPlaying = true
     beginPlayingTime = CACurrentMediaTime()
 //    isPaused = false
-    
   }
   
   func pause() {
-    
+    isPlaying = false
+    seekOffset = timeline.currentTime
+//    isPaused = true
   }
   
-  func resume() {
-    
-  }
-  
-  func seek() {
-    
+  func seek(unitPercentage: Float32) {
+    pause()
+    let offset = timeline.duration * Double(unitPercentage)
+    seekOffset = offset
+    timeline.currentTime = offset
+//    korgeRenderCall()
   }
 }
 
 extension KorgeViewController: GLKViewControllerDelegate {
   func glkViewControllerUpdate(_ controller: GLKViewController) {
-    guard preferredFramesPerSecond != 1 else {
-      isPaused = true
-      preferredFramesPerSecond = _originalPreferredFramesPerSecond
-      return
-    }
   }
 }
 
