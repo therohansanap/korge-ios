@@ -16,11 +16,38 @@
                     <glkView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" enableSetNeedsDisplay="NO" id="FBF-PU-Dua">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w4E-wE-p77">
+                                <rect key="frame" x="334" y="44" width="60" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbx-mh-GTS">
+                                        <rect key="frame" x="9" y="19.5" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstItem="sbx-mh-GTS" firstAttribute="centerY" secondItem="w4E-wE-p77" secondAttribute="centerY" id="PTL-MX-cHG"/>
+                                    <constraint firstAttribute="height" constant="60" id="aNb-Fy-luu"/>
+                                    <constraint firstItem="sbx-mh-GTS" firstAttribute="centerX" secondItem="w4E-wE-p77" secondAttribute="centerX" id="bRQ-OL-Cj9"/>
+                                    <constraint firstAttribute="width" constant="60" id="fIA-bY-AAo"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="2g7-81-hEi"/>
+                        <constraints>
+                            <constraint firstItem="2g7-81-hEi" firstAttribute="trailing" secondItem="w4E-wE-p77" secondAttribute="trailing" constant="20" id="m6k-Qh-vOh"/>
+                            <constraint firstItem="w4E-wE-p77" firstAttribute="top" secondItem="2g7-81-hEi" secondAttribute="top" id="vgq-g7-hfS"/>
+                        </constraints>
                         <connections>
                             <outlet property="delegate" destination="H6i-YB-VFm" id="cBK-5h-PMm"/>
                         </connections>
                     </glkView>
+                    <connections>
+                        <outlet property="timelineCurrentTime" destination="sbx-mh-GTS" id="ZM0-Yb-usR"/>
+                    </connections>
                 </glkViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GbO-dw-ZA4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -72,10 +99,10 @@
                                     <action selector="playTapped:" destination="V9j-zS-rfq" eventType="touchUpInside" id="VE2-6Z-GrM"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="nvc-ds-PbD">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.40000000000000002" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="nvc-ds-PbD">
                                 <rect key="frame" x="68" y="763" width="262" height="31"/>
                                 <connections>
-                                    <action selector="seekerSeeked:" destination="V9j-zS-rfq" eventType="valueChanged" id="8on-ZI-e1J"/>
+                                    <action selector="seekerSeeked:" destination="V9j-zS-rfq" eventType="valueChanged" id="suc-qO-v3M"/>
                                 </connections>
                             </slider>
                         </subviews>
@@ -107,6 +134,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

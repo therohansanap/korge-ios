@@ -8,9 +8,11 @@
 import UIKit
 import GLKit
 import GameMain
+import CoreMedia
 
 class KorgeViewController: GLKViewController {
   
+  @IBOutlet weak var timelineCurrentTime: UILabel!
   var context: EAGLContext? = GLContext.shared
   
   var gameWindow2: MyIosGameWindow2?
@@ -24,6 +26,7 @@ class KorgeViewController: GLKViewController {
   var beginPlayingTime: CFTimeInterval = 0
   var seekOffset = 0.0
   var timeline = Timeline()
+  let videoManager = VideoManager()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -48,24 +51,27 @@ class KorgeViewController: GLKViewController {
   }
   
   override func glkView(_ view: GLKView, drawIn rect: CGRect) {
-    print(#function, CACurrentMediaTime())
+    let currentTime = CACurrentMediaTime()
+    print("CurrentTime - \(currentTime)")
     if isPlaying {
-      let currentTime = CACurrentMediaTime()
       var diff = currentTime - beginPlayingTime + seekOffset
       diff = diff < 0 ? 0 : (diff > timeline.duration ? timeline.duration : diff)
       timeline.currentTime = diff
     }
     
+    printTimelineCurrentTime()
     
+    if let nativeImage = videoManager.getFrame(sceneTime: KotlinDouble(value: timeline.currentTime), hostTime: currentTime),
+       let videoView1 = MainKt.videoView1 {
+      MainKt.update(nativeImage: nativeImage, onView: videoView1)
+    }
     self.korgeRenderCall()
   }
   
   func korgeRenderCall() {
     MainKt.sceneTime = timeline.currentTime
+//    print("Timeline current time -> \(timeline.currentTime)s")
 
-    print("Timeline current time -> \(timeline.currentTime)s")
-    
-    
     if !self.isInitialized {
       self.isInitialized = true
       self.gameWindow2?.gameWindow.dispatchInitEvent()
@@ -85,15 +91,16 @@ class KorgeViewController: GLKViewController {
   
   
   func play() {
+    print("===========")
     isPlaying = true
+    videoManager.player1.play()
     beginPlayingTime = CACurrentMediaTime()
-//    isPaused = false
   }
   
   func pause() {
     isPlaying = false
+    videoManager.player1.pause()
     seekOffset = timeline.currentTime
-//    isPaused = true
   }
   
   func seek(unitPercentage: Float32) {
@@ -101,7 +108,16 @@ class KorgeViewController: GLKViewController {
     let offset = timeline.duration * Double(unitPercentage)
     seekOffset = offset
     timeline.currentTime = offset
-//    korgeRenderCall()
+    
+    let seekTime = CMTime(seconds: offset, preferredTimescale: 600)
+    
+    videoManager.player1.seek(to: seekTime, toleranceBefore: .zero, toleranceAfter: .zero)
+  }
+  
+  private func printTimelineCurrentTime() {
+    let formatter = NumberFormatter()
+    formatter.maximumFractionDigits = 2
+    timelineCurrentTime.text = "\(formatter.string(from: NSNumber(value: timeline.currentTime)) ?? "")"
   }
 }
 
@@ -112,6 +128,6 @@ extension KorgeViewController: GLKViewControllerDelegate {
 
 
 class Timeline {
-  var duration: Double = 15
+  var duration: Double = 5
   var currentTime: Double = 0
 }

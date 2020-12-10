@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C02DC7C2581EC1500711B38 /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C02DC7B2581EC1500711B38 /* VideoManager.swift */; };
+		1C02DC82258242C200711B38 /* GameMain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6482EE255172B2006158E3 /* GameMain.framework */; };
+		1C02DC83258242C200711B38 /* GameMain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6482EE255172B2006158E3 /* GameMain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1C1FC83225591CAB007E09DE /* GLContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1FC83125591CAB007E09DE /* GLContext.swift */; };
-		1C27CA3A256689DE007C31A0 /* GameMain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6482EE255172B2006158E3 /* GameMain.framework */; };
-		1C27CA3B256689DE007C31A0 /* GameMain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6482EE255172B2006158E3 /* GameMain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1C2B4C0925808E6A007CB6BE /* video3-24fps.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1C2B4C0625808E6A007CB6BE /* video3-24fps.mp4 */; };
 		1C2B4C0A25808E6A007CB6BE /* video1-30fps.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1C2B4C0725808E6A007CB6BE /* video1-30fps.mp4 */; };
 		1C2B4C0B25808E6A007CB6BE /* video2-60fps.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1C2B4C0825808E6A007CB6BE /* video2-60fps.mp4 */; };
@@ -31,13 +32,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		1C27CA3C256689DE007C31A0 /* Embed Frameworks */ = {
+		1C02DC84258242C200711B38 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1C27CA3B256689DE007C31A0 /* GameMain.framework in Embed Frameworks */,
+				1C02DC83258242C200711B38 /* GameMain.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,6 +46,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1C02DC7B2581EC1500711B38 /* VideoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoManager.swift; sourceTree = "<group>"; };
 		1C1FC83125591CAB007E09DE /* GLContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLContext.swift; sourceTree = "<group>"; };
 		1C27CA34256687E0007C31A0 /* GameMain.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = GameMain.framework.dSYM; sourceTree = "<group>"; };
 		1C27CA35256687E0007C31A0 /* GameMain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GameMain.framework; sourceTree = "<group>"; };
@@ -80,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C27CA3A256689DE007C31A0 /* GameMain.framework in Frameworks */,
+				1C02DC82258242C200711B38 /* GameMain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +139,7 @@
 				1CA205D22554197C00DF204A /* GLHelper.m */,
 				1C895A7D25808A2D001C7604 /* KorgeViewController */,
 				1CECB2F62567B6B9002B6DEC /* VideoRecorder.swift */,
+				1C02DC7B2581EC1500711B38 /* VideoManager.swift */,
 				1C6482D6255149DF006158E3 /* Main.storyboard */,
 				1C11D743257E25AD006AE97E /* videos */,
 				1C6482D9255149E0006158E3 /* Assets.xcassets */,
@@ -196,7 +199,7 @@
 				1C6482C9255149DF006158E3 /* Sources */,
 				1C6482CB255149DF006158E3 /* Resources */,
 				1C6482CA255149DF006158E3 /* Frameworks */,
-				1C27CA3C256689DE007C31A0 /* Embed Frameworks */,
+				1C02DC84258242C200711B38 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -268,6 +271,7 @@
 			files = (
 				1C1FC83225591CAB007E09DE /* GLContext.swift in Sources */,
 				1C796426257E2D4000CEB07D /* ViewController3.swift in Sources */,
+				1C02DC7C2581EC1500711B38 /* VideoManager.swift in Sources */,
 				1C6482D1255149DF006158E3 /* AppDelegate.swift in Sources */,
 				1CA205D32554197C00DF204A /* GLHelper.m in Sources */,
 				1C895A7F25808A4D001C7604 /* KorgeViewController+TouchHandling.swift in Sources */,
@@ -431,7 +435,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rohansanap.SampleApp;
+				PRODUCT_BUNDLE_IDENTIFIER = io.invideo.POC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SampleApp/SampleApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -456,7 +460,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rohansanap.SampleApp;
+				PRODUCT_BUNDLE_IDENTIFIER = io.invideo.POC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SampleApp/SampleApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
